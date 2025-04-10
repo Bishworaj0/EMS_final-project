@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Equipment Status | EMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white transition">
+
+  <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">🛠 Equipment Status</h1>
+    <a href="dashboard.html" class="text-blue-600 hover:underline text-sm">← Back to Dashboard</a>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <!-- Chart -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-2">Equipment Health Overview</h2>
+      <canvas id="statusChart" height="100"></canvas>
+    </section>
+
+    <!-- Equipment Table -->
+    <section class="mb-10 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">All Equipment</h2>
+      <table class="min-w-full text-sm text-left">
+        <thead class="bg-gray-100 dark:bg-gray-700">
+          <tr>
+            <th class="p-3">Name</th>
+            <th class="p-3">Type</th>
+            <th class="p-3">Status</th>
+            <th class="p-3">Last Serviced</th>
+            <th class="p-3">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="equipmentTableBody" class="divide-y divide-gray-200 dark:divide-gray-700">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add Equipment Form -->
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">Add New Equipment</h2>
+      <form id="addEquipmentForm" class="grid md:grid-cols-2 gap-4">
+        <input type="text" id="equipmentName" placeholder="Name" required class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <input type="text" id="equipmentType" placeholder="Type (Tractor, Sensor, etc)" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <label for="equipmentStatus" class="block mb-1">Equipment Status</label>
+        <select id="equipmentStatus" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+          <option value="Working">Working</option>
+          <option value="Needs Maintenance">Needs Maintenance</option>
+          <option value="Broken">Broken</option>
+        </select>
+        <label for="lastServiced" class="block mb-1">Last Service Date</label>
+        <input type="date" id="lastServiced" placeholder="Select service date" title="Date of last service" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <input type="text" id="equipmentNotes" placeholder="Notes" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <button type="submit" class="col-span-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">
+          Add Equipment
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <script src="equipment.js"></script>
+</body>
+</html>
