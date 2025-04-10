@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Field Capacity | EMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
+  <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">🌾 Field Capacity</h1>
+    <a href="dashboard.html" class="text-blue-600 hover:underline text-sm">← Back to Dashboard</a>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <!-- Chart -->
+    <section class="mb-8">
+      <h2 class="text-lg font-semibold mb-2">Water-Holding Capacity per Field (mm)</h2>
+      <canvas id="capacityChart" height="100"></canvas>
+    </section>
+
+    <!-- Field List Table -->
+    <section class="mb-10 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">All Fields</h2>
+      <table class="min-w-full text-sm text-left">
+        <thead class="bg-gray-100 dark:bg-gray-700">
+          <tr>
+            <th class="p-3">Field</th>
+            <th class="p-3">Soil Type</th>
+            <th class="p-3">Area (ha)</th>
+            <th class="p-3">Capacity (mm)</th>
+            <th class="p-3">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="fieldTableBody" class="divide-y divide-gray-200 dark:divide-gray-700">
+          <!-- JS will render fields here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add New Field Form -->
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+      <h2 class="text-lg font-semibold mb-4">Add New Field</h2>
+      <form id="addFieldForm" class="grid md:grid-cols-2 gap-4">
+        <input type="text" id="fieldName" placeholder="Field Name" required class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+        <input type="text" id="soilType" placeholder="Soil Type" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500">
+        <input type="number" id="area" placeholder="Area (ha)" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <input type="number" id="capacity" placeholder="Capacity (mm)" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <input type="text" id="fieldNotes" placeholder="Notes" class="p-2 border rounded bg-white dark:bg-gray-700 text-black dark:text-white">
+        <button type="submit" class="col-span-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">
+          Add Field
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <script src="fields.js"></script>
+</body>
+</html>
